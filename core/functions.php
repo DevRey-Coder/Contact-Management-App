@@ -1,7 +1,5 @@
 <?php
 
-include "./conn.php";
-
 function url(string $path = null): string
 {
     $url = isset($_SERVER["HTTPS"]) ? "https" : "http";

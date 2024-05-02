@@ -1,6 +1,6 @@
 <?php
 
-include "./template/header.php";
+require_once "./template/header.php";
 include "./core/functions.php";
 
 ?>
@@ -10,7 +10,7 @@ include "./core/functions.php";
         <div class="col-12 col-lg-12">
             <div class="mb-3">
                 <h3>Contacts</h3>
-                <a href="../CRUD/create.php"></a>
+                <a href="../CRUD/create.php" class="btn btn-primary">Add Contact</a>
             </div>
 
             <?php
@@ -28,7 +28,7 @@ include "./core/functions.php";
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($contacts as $contact): ?>
+                    <?php foreach ($contacts as $contact) : ?>
                         <tr>
                             <td><?php echo $contact['id']; ?></td>
                             <td><?php echo $contact['name']; ?></td>
@@ -38,8 +38,7 @@ include "./core/functions.php";
                                 <a href="./CRUD/update.php?id=<?= $contact["id"]; ?>" class="btn btn-warning">Update</a>
                                 <form action="" method="POST">
                                     <input type="hidden" name="id" value="<?= $contact["id"] ?>">
-                                    <button onclick="return confirm('Are U Sure to Delete?')"
-                                        class="btn btn-danger">Delete</button>
+                                    <button onclick="return confirm('Are U Sure to Delete?')" class="btn btn-danger">Delete</button>
                                 </form>
                             </td>
                         </tr>
@@ -50,4 +49,4 @@ include "./core/functions.php";
     </div>
 </div>
 
-<?php include "./template/footer.php" ?>
+<?php require_once "./template/footer.php" ?>
