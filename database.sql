@@ -1,0 +1,6 @@
+CREATE TABLE contacts (
+    id INT(20) AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100),
+    phone VARCHAR(20) NOT NULL
+);
