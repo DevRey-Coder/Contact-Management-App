@@ -7,17 +7,20 @@ include "./core/functions.php";
 
 <div class="container">
     <div class="row">
-        <div class="col-12 col-lg-12">
+        <div class="col-12 col-lg-12 py-3">
             <div class="mb-3">
-                <h3>Contacts</h3>
-                <a href="../CRUD/create.php" class="btn btn-primary">Add Contact</a>
+                <h3>All Contacts</h3>
+                <a href="crud/create.php" class="btn btn-primary">Add Contact</a>
             </div>
 
             <?php
             $contacts = getAllContacts();
             ?>
 
-            <table class="table table-hover">
+            <?php if(empty($contacts)): ?>
+                <p>No contacts available.</p>
+            <?php else: ?>
+                <table class="table table-hover">
                 <thead>
                     <tr>
                         <th scope="col">No</th>
@@ -35,7 +38,7 @@ include "./core/functions.php";
                             <td><?php echo $contact['email']; ?></td>
                             <td><?php echo $contact['phone'] ?></td>
                             <td>
-                                <a href="./CRUD/update.php?id=<?= $contact["id"]; ?>" class="btn btn-warning">Update</a>
+                                <a href="crud/update.php?id=<?= $contact["id"]; ?>" class="btn btn-warning">Update</a>
                                 <form action="" method="POST">
                                     <input type="hidden" name="id" value="<?= $contact["id"] ?>">
                                     <button onclick="return confirm('Are U Sure to Delete?')" class="btn btn-danger">Delete</button>
@@ -45,6 +48,7 @@ include "./core/functions.php";
                     <?php endforeach; ?>
                 </tbody>
             </table>
+            <?php endif; ?>
         </div>
     </div>
 </div>
